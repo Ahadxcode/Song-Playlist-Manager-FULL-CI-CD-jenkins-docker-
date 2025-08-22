@@ -1,0 +1,13 @@
+services:
+  playlist:
+    image: ${IMAGE_REPO}:${IMAGE_TAG}
+    container_name: ${CONTAINER_NAME:-playlist-manager}
+    working_dir: /app
+    stdin_open: true   # allow interactive sessions via docker exec
+    tty: true
+    volumes:
+      - playlist_data:/app
+    restart: unless-stopped
+
+volumes:
+  playlist_data:
